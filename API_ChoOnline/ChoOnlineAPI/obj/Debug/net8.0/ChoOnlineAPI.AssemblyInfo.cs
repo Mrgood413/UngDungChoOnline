@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChoOnlineAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8485aac53e95ba4cb678ce1801f44442b226674")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+328bc2e781738e8ec9a86b5f81ac0a5d6230ef47")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChoOnlineAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChoOnlineAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

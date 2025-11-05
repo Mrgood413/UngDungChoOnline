@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "CedpCeXDA1Z7lQVcsMrIsbEEP6fLk9jUf2vBN9AvkPA=",
+  "Source": "ChoOnlineAPI",
+  "BasePath": "_content/ChoOnlineAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
