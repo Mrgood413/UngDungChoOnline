@@ -1,4 +1,5 @@
 using ChoOnlineAPI.Models;
+using ChoOnlineAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChoOnlineAPI.Controllers
@@ -7,8 +8,14 @@ namespace ChoOnlineAPI.Controllers
     [Route("api/[controller]")]
     public class ReviewController : ControllerBase
     {
+        private readonly IReviewRepository _reviewRepository;
+
+        public ReviewController(IReviewRepository reviewRepository)
+        {
+            _reviewRepository = reviewRepository;
+        }
         [HttpPost]
-        public IActionResult Create([FromBody] ReviewCreateRequest request)
+        public IActionResult Create([FromBody] Review review)
         {
             return StatusCode(501);
         }
@@ -26,6 +33,9 @@ namespace ChoOnlineAPI.Controllers
         }
     }
 }
+
+
+
 
 
 

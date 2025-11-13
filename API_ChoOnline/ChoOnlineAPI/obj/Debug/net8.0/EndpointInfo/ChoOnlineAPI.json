@@ -96,17 +96,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
+                "$ref": "#/components/schemas/User"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
+                "$ref": "#/components/schemas/User"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
+                "$ref": "#/components/schemas/User"
               }
             }
           }
@@ -127,17 +127,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "$ref": "#/components/schemas/User"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "$ref": "#/components/schemas/User"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "$ref": "#/components/schemas/User"
               }
             }
           }
@@ -172,173 +172,6 @@
         }
       }
     },
-    "/api/Cart/{buyerId}": {
-      "get": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "buyerId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "buyerId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/{buyerId}/items": {
-      "post": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "buyerId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CartItemRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CartItemRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CartItemRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/{buyerId}/items/{productId}": {
-      "put": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "buyerId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "productId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CartItemRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CartItemRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CartItemRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "buyerId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "productId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Category": {
       "get": {
         "tags": [
@@ -358,17 +191,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoryRequest"
+                "$ref": "#/components/schemas/Category"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoryRequest"
+                "$ref": "#/components/schemas/Category"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoryRequest"
+                "$ref": "#/components/schemas/Category"
               }
             }
           }
@@ -421,17 +254,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoryRequest"
+                "$ref": "#/components/schemas/Category"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoryRequest"
+                "$ref": "#/components/schemas/Category"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoryRequest"
+                "$ref": "#/components/schemas/Category"
               }
             }
           }
@@ -449,6 +282,170 @@
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorite/user/{userId}": {
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorite/product/{productId}": {
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorite": {
+      "post": {
+        "tags": [
+          "Favorite"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Favorite"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Favorite"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Favorite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorite/{favoriteId}": {
+      "delete": {
+        "tags": [
+          "Favorite"
+        ],
+        "parameters": [
+          {
+            "name": "favoriteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorite/user/{userId}/product/{productId}": {
+      "delete": {
+        "tags": [
+          "Favorite"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorite/user/{userId}/product/{productId}/exists": {
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "productId",
             "in": "path",
             "required": true,
             "schema": {
@@ -512,17 +509,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderCreateRequest"
+                "$ref": "#/components/schemas/Transaction"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderCreateRequest"
+                "$ref": "#/components/schemas/Transaction"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderCreateRequest"
+                "$ref": "#/components/schemas/Transaction"
               }
             }
           }
@@ -557,14 +554,14 @@
         }
       }
     },
-    "/api/Order/{orderId}": {
+    "/api/Order/seller/{sellerId}": {
       "get": {
         "tags": [
           "Order"
         ],
         "parameters": [
           {
-            "name": "orderId",
+            "name": "sellerId",
             "in": "path",
             "required": true,
             "schema": {
@@ -580,14 +577,14 @@
         }
       }
     },
-    "/api/Order/{orderId}/status": {
-      "put": {
+    "/api/Order/{transactionId}": {
+      "get": {
         "tags": [
           "Order"
         ],
         "parameters": [
           {
-            "name": "orderId",
+            "name": "transactionId",
             "in": "path",
             "required": true,
             "schema": {
@@ -596,25 +593,36 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderStatusUpdateRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderStatusUpdateRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderStatusUpdateRequest"
-              }
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Order/{transactionId}/status": {
+      "put": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/TransactionStatus"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -641,17 +649,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductCreateRequest"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductCreateRequest"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductCreateRequest"
+                "$ref": "#/components/schemas/Product"
               }
             }
           }
@@ -704,17 +712,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductUpdateRequest"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductUpdateRequest"
+                "$ref": "#/components/schemas/Product"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductUpdateRequest"
+                "$ref": "#/components/schemas/Product"
               }
             }
           }
@@ -808,17 +816,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReportCreateRequest"
+                "$ref": "#/components/schemas/Report"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReportCreateRequest"
+                "$ref": "#/components/schemas/Report"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ReportCreateRequest"
+                "$ref": "#/components/schemas/Report"
               }
             }
           }
@@ -862,17 +870,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReportStatusUpdateRequest"
+                "$ref": "#/components/schemas/Report"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReportStatusUpdateRequest"
+                "$ref": "#/components/schemas/Report"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ReportStatusUpdateRequest"
+                "$ref": "#/components/schemas/Report"
               }
             }
           }
@@ -893,17 +901,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReviewCreateRequest"
+                "$ref": "#/components/schemas/Review"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReviewCreateRequest"
+                "$ref": "#/components/schemas/Review"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ReviewCreateRequest"
+                "$ref": "#/components/schemas/Review"
               }
             }
           }
@@ -960,265 +968,646 @@
           }
         }
       }
-    },
-    "/WeatherForecast": {
-      "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
-        "operationId": "GetWeatherForecast",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
     "schemas": {
-      "CartItemRequest": {
-        "type": "object",
-        "properties": {
-          "productID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
+      "AccountStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
       },
-      "CategoryRequest": {
+      "AdminAction": {
         "type": "object",
         "properties": {
-          "categoryName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "LoginRequest": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "OrderCreateRequest": {
-        "type": "object",
-        "properties": {
-          "buyerID": {
+          "actionId": {
             "type": "integer",
             "format": "int32"
           },
-          "sellerID": {
+          "adminId": {
             "type": "integer",
             "format": "int32"
           },
-          "paymentMethod": {
-            "type": "string",
-            "nullable": true
-          },
-          "deliveryAddress": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "OrderStatusUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ProductCreateRequest": {
-        "type": "object",
-        "properties": {
-          "sellerID": {
+          "targetUserId": {
             "type": "integer",
             "format": "int32"
           },
-          "categoryID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "price": {
-            "type": "number",
-            "format": "double"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "imageURL": {
-            "type": "string",
-            "nullable": true
-          },
-          "location": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ProductUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "categoryID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "price": {
-            "type": "number",
-            "format": "double"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "imageURL": {
-            "type": "string",
-            "nullable": true
-          },
-          "location": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "RegisterRequest": {
-        "type": "object",
-        "properties": {
-          "fullName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ReportCreateRequest": {
-        "type": "object",
-        "properties": {
-          "reporterID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "targetProductID": {
-            "type": "integer",
-            "format": "int32"
+          "actionType": {
+            "$ref": "#/components/schemas/AdminActionType"
           },
           "reason": {
             "type": "string",
             "nullable": true
+          },
+          "durationDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "admin": {
+            "$ref": "#/components/schemas/User"
+          },
+          "targetUser": {
+            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false
       },
-      "ReportStatusUpdateRequest": {
+      "AdminActionType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "BanRecord": {
         "type": "object",
         "properties": {
-          "status": {
+          "banId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reportId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "banType": {
+            "$ref": "#/components/schemas/BanType"
+          },
+          "reason": {
             "type": "string",
+            "nullable": true
+          },
+          "bannedBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "report": {
+            "$ref": "#/components/schemas/Report"
+          },
+          "admin": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BanType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "iconUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "parent": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            },
+            "nullable": true
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ReviewCreateRequest": {
+      "Comment": {
         "type": "object",
         "properties": {
-          "orderID": {
+          "commentId": {
             "type": "integer",
             "format": "int32"
           },
-          "productID": {
+          "productId": {
             "type": "integer",
             "format": "int32"
           },
-          "buyerID": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentCommentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "parentComment": {
+            "$ref": "#/components/schemas/Comment"
+          },
+          "replies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Conversation": {
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastMessageAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "buyer": {
+            "$ref": "#/components/schemas/User"
+          },
+          "seller": {
+            "$ref": "#/components/schemas/User"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Favorite": {
+        "type": "object",
+        "properties": {
+          "favoriteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "messageId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "conversationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "senderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "isRead": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "conversation": {
+            "$ref": "#/components/schemas/Conversation"
+          },
+          "sender": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/ProductCondition"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProductStatus"
+          },
+          "locationLat": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "locationLng": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "addressText": {
+            "type": "string",
+            "nullable": true
+          },
+          "viewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "seller": {
+            "$ref": "#/components/schemas/User"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductImage"
+            },
+            "nullable": true
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            },
+            "nullable": true
+          },
+          "transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            },
+            "nullable": true
+          },
+          "reports": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Report"
+            },
+            "nullable": true
+          },
+          "favorites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Favorite"
+            },
+            "nullable": true
+          },
+          "conversations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Conversation"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductCondition": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ProductImage": {
+        "type": "object",
+        "properties": {
+          "imageId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "isPrimary": {
+            "type": "boolean"
+          },
+          "orderIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductStatus": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Report": {
+        "type": "object",
+        "properties": {
+          "reportId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reporterId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reportedUserId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "reportedProductId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "reportedCommentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "reportType": {
+            "$ref": "#/components/schemas/ReportType"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "evidenceUrls": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReportStatus"
+          },
+          "priority": {
+            "$ref": "#/components/schemas/ReportPriority"
+          },
+          "adminNote": {
+            "type": "string",
+            "nullable": true
+          },
+          "resolvedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "resolutionAction": {
+            "$ref": "#/components/schemas/ResolutionAction"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "resolvedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reporter": {
+            "$ref": "#/components/schemas/User"
+          },
+          "reportedUser": {
+            "$ref": "#/components/schemas/User"
+          },
+          "reportedProduct": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "reportedComment": {
+            "$ref": "#/components/schemas/Comment"
+          },
+          "resolver": {
+            "$ref": "#/components/schemas/User"
+          },
+          "banRecords": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BanRecord"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReportPriority": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ReportStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ReportType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ResolutionAction": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Review": {
+        "type": "object",
+        "properties": {
+          "reviewId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reviewerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "revieweeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transactionId": {
             "type": "integer",
             "format": "int32"
           },
@@ -1229,32 +1618,309 @@
           "comment": {
             "type": "string",
             "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewer": {
+            "$ref": "#/components/schemas/User"
+          },
+          "reviewee": {
+            "$ref": "#/components/schemas/User"
+          },
+          "transaction": {
+            "$ref": "#/components/schemas/Transaction"
           }
         },
         "additionalProperties": false
       },
-      "WeatherForecast": {
+      "Transaction": {
         "type": "object",
         "properties": {
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "temperatureC": {
+          "transactionId": {
             "type": "integer",
             "format": "int32"
           },
-          "temperatureF": {
+          "productId": {
             "type": "integer",
-            "format": "int32",
-            "readOnly": true
+            "format": "int32"
           },
-          "summary": {
+          "buyerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TransactionStatus"
+          },
+          "meetingLocation": {
             "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "buyer": {
+            "$ref": "#/components/schemas/User"
+          },
+          "seller": {
+            "$ref": "#/components/schemas/User"
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Review"
+            },
             "nullable": true
           }
         },
         "additionalProperties": false
+      },
+      "TransactionStatus": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TrustHistory": {
+        "type": "object",
+        "properties": {
+          "historyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "changeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/TrustHistoryReason"
+          },
+          "relatedId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TrustHistoryReason": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "passwordHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "avatarUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "trustScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accountStatus": {
+            "$ref": "#/components/schemas/AccountStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "nullable": true
+          },
+          "reviewsGiven": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Review"
+            },
+            "nullable": true
+          },
+          "reviewsReceived": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Review"
+            },
+            "nullable": true
+          },
+          "reportsMade": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Report"
+            },
+            "nullable": true
+          },
+          "reportsReceived": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Report"
+            },
+            "nullable": true
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            },
+            "nullable": true
+          },
+          "transactionsAsBuyer": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            },
+            "nullable": true
+          },
+          "transactionsAsSeller": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            },
+            "nullable": true
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "nullable": true
+          },
+          "conversationsAsBuyer": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Conversation"
+            },
+            "nullable": true
+          },
+          "conversationsAsSeller": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Conversation"
+            },
+            "nullable": true
+          },
+          "favorites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Favorite"
+            },
+            "nullable": true
+          },
+          "trustHistories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrustHistory"
+            },
+            "nullable": true
+          },
+          "adminActionsPerformed": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminAction"
+            },
+            "nullable": true
+          },
+          "adminActionsReceived": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminAction"
+            },
+            "nullable": true
+          },
+          "banRecords": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BanRecord"
+            },
+            "nullable": true
+          },
+          "bansIssued": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BanRecord"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserRole": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   }

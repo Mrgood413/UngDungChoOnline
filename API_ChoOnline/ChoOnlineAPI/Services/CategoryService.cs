@@ -16,7 +16,7 @@ namespace ChoOnlineAPI.Services
 
         public async Task<Category?> GetByIdAsync(int categoryId)
         {
-            return await _ctx.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.CategoryID == categoryId);
+            return await _ctx.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.CategoryId == categoryId);
         }
 
         public async Task<Category> CreateAsync(Category category)
@@ -43,5 +43,6 @@ namespace ChoOnlineAPI.Services
         }
     }
 }
+
 
 

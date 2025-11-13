@@ -1,4 +1,5 @@
 using ChoOnlineAPI.Models;
+using ChoOnlineAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChoOnlineAPI.Controllers
@@ -7,6 +8,12 @@ namespace ChoOnlineAPI.Controllers
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
+        private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryController(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -20,13 +27,13 @@ namespace ChoOnlineAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CategoryRequest request)
+        public IActionResult Create([FromBody] Category category)
         {
             return StatusCode(501);
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] CategoryRequest request)
+        public IActionResult Update([FromRoute] int id, [FromBody] Category category)
         {
             return StatusCode(501);
         }
@@ -38,6 +45,7 @@ namespace ChoOnlineAPI.Controllers
         }
     }
 }
+
 
 
 

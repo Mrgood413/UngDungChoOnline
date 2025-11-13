@@ -16,15 +16,15 @@ namespace ChoOnlineAPI.Services
 
         public async Task<Report?> GetByIdAsync(int reportId)
         {
-            return await _ctx.Reports.AsNoTracking().FirstOrDefaultAsync(r => r.ReportID == reportId);
+            return await _ctx.Reports.AsNoTracking().FirstOrDefaultAsync(r => r.ReportId == reportId);
         }
 
         public async Task<IEnumerable<Report>> GetPendingAsync()
         {
-            return await _ctx.Reports.AsNoTracking().Where(r => r.Status == "Pending").ToListAsync();
+            return await _ctx.Reports.AsNoTracking().Where(r => r.Status == ReportStatus.Pending).ToListAsync();
         }
 
-        public async Task<IEnumerable<Report>> GetByStatusAsync(string status)
+        public async Task<IEnumerable<Report>> GetByStatusAsync(ReportStatus status)
         {
             return await _ctx.Reports.AsNoTracking().Where(r => r.Status == status).ToListAsync();
         }
@@ -54,5 +54,6 @@ namespace ChoOnlineAPI.Services
         }
     }
 }
+
 
 

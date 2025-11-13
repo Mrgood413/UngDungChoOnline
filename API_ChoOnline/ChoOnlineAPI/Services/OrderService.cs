@@ -9,49 +9,63 @@ namespace ChoOnlineAPI.Services
         private readonly AppDbContext _ctx;
         public OrderService(AppDbContext ctx) => _ctx = ctx;
 
-        public async Task<IEnumerable<Order>> GetAllAsync()
+        public async Task<IEnumerable<Transaction>> GetAllAsync()
         {
-            return await _ctx.Orders.AsNoTracking().ToListAsync();
+            return await _ctx.Transactions.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Order?> GetByIdAsync(int orderId)
+        public async Task<Transaction?> GetByIdAsync(int transactionId)
         {
-            return await _ctx.Orders.AsNoTracking().FirstOrDefaultAsync(o => o.OrderID == orderId);
+            return await _ctx.Transactions.AsNoTracking().FirstOrDefaultAsync(t => t.TransactionId == transactionId);
         }
 
-        public async Task<IEnumerable<Order>> GetByBuyerIdAsync(int buyerId)
+        public async Task<IEnumerable<Transaction>> GetByBuyerIdAsync(int buyerId)
         {
-            return await _ctx.Orders.AsNoTracking().Where(o => o.BuyerID == buyerId).ToListAsync();
+            return await _ctx.Transactions.AsNoTracking().Where(t => t.BuyerId == buyerId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Order>> GetBySellerIdAsync(int sellerId)
+        public async Task<IEnumerable<Transaction>> GetBySellerIdAsync(int sellerId)
         {
-            return await _ctx.Orders.AsNoTracking().Where(o => o.SellerID == sellerId).ToListAsync();
+            return await _ctx.Transactions.AsNoTracking().Where(t => t.SellerId == sellerId).ToListAsync();
         }
 
-        public async Task<Order> CreateAsync(Order order)
+        public async Task<IEnumerable<Transaction>> GetByProductIdAsync(int productId)
         {
-            _ctx.Orders.Add(order);
+            return await _ctx.Transactions.AsNoTracking().Where(t => t.ProductId == productId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Transaction>> GetByStatusAsync(TransactionStatus status)
+        {
+            return await _ctx.Transactions.AsNoTracking().Where(t => t.Status == status).ToListAsync();
+        }
+
+        public async Task<Transaction> CreateAsync(Transaction transaction)
+        {
+            transaction.CreatedAt = DateTime.UtcNow;
+            _ctx.Transactions.Add(transaction);
             await _ctx.SaveChangesAsync();
-            return order;
+            return transaction;
         }
 
-        public async Task<Order> UpdateAsync(Order order)
+        public async Task<Transaction> UpdateAsync(Transaction transaction)
         {
-            _ctx.Entry(order).State = EntityState.Modified;
+            _ctx.Entry(transaction).State = EntityState.Modified;
             await _ctx.SaveChangesAsync();
-            return order;
+            return transaction;
         }
 
-        public async Task<bool> DeleteAsync(int orderId)
+        public async Task<bool> DeleteAsync(int transactionId)
         {
-            var entity = await _ctx.Orders.FindAsync(orderId);
+            var entity = await _ctx.Transactions.FindAsync(transactionId);
             if (entity == null) return false;
-            _ctx.Orders.Remove(entity);
+            _ctx.Transactions.Remove(entity);
             await _ctx.SaveChangesAsync();
             return true;
         }
     }
 }
+
+
+
 
 

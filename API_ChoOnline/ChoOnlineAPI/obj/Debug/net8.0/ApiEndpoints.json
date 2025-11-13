@@ -60,8 +60,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.LoginRequest",
+        "Name": "user",
+        "Type": "ChoOnlineAPI.Models.User",
         "IsRequired": true
       }
     ],
@@ -92,108 +92,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.RegisterRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChoOnlineAPI.Controllers.CartController",
-    "Method": "GetCart",
-    "RelativePath": "api/Cart/{buyerId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "buyerId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChoOnlineAPI.Controllers.CartController",
-    "Method": "ClearCart",
-    "RelativePath": "api/Cart/{buyerId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "buyerId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChoOnlineAPI.Controllers.CartController",
-    "Method": "AddItem",
-    "RelativePath": "api/Cart/{buyerId}/items",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "buyerId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.CartItemRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChoOnlineAPI.Controllers.CartController",
-    "Method": "UpdateItem",
-    "RelativePath": "api/Cart/{buyerId}/items/{productId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "buyerId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "productId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.CartItemRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChoOnlineAPI.Controllers.CartController",
-    "Method": "RemoveItem",
-    "RelativePath": "api/Cart/{buyerId}/items/{productId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "buyerId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "productId",
-        "Type": "System.Int32",
+        "Name": "user",
+        "Type": "ChoOnlineAPI.Models.User",
         "IsRequired": true
       }
     ],
@@ -218,8 +118,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.CategoryRequest",
+        "Name": "category",
+        "Type": "ChoOnlineAPI.Models.Category",
         "IsRequired": true
       }
     ],
@@ -255,8 +155,8 @@
         "IsRequired": true
       },
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.CategoryRequest",
+        "Name": "category",
+        "Type": "ChoOnlineAPI.Models.Category",
         "IsRequired": true
       }
     ],
@@ -272,6 +172,112 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.FavoriteController",
+    "Method": "Create",
+    "RelativePath": "api/Favorite",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "favorite",
+        "Type": "ChoOnlineAPI.Models.Favorite",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.FavoriteController",
+    "Method": "Delete",
+    "RelativePath": "api/Favorite/{favoriteId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "favoriteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.FavoriteController",
+    "Method": "GetByProduct",
+    "RelativePath": "api/Favorite/product/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.FavoriteController",
+    "Method": "GetByUser",
+    "RelativePath": "api/Favorite/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.FavoriteController",
+    "Method": "DeleteByUserAndProduct",
+    "RelativePath": "api/Favorite/user/{userId}/product/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.FavoriteController",
+    "Method": "CheckExists",
+    "RelativePath": "api/Favorite/user/{userId}/product/{productId}/exists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -313,8 +319,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.OrderCreateRequest",
+        "Name": "transaction",
+        "Type": "ChoOnlineAPI.Models.Transaction",
         "IsRequired": true
       }
     ],
@@ -323,13 +329,13 @@
   {
     "ContainingType": "ChoOnlineAPI.Controllers.OrderController",
     "Method": "GetDetail",
-    "RelativePath": "api/Order/{orderId}",
+    "RelativePath": "api/Order/{transactionId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orderId",
+        "Name": "transactionId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -339,20 +345,20 @@
   {
     "ContainingType": "ChoOnlineAPI.Controllers.OrderController",
     "Method": "UpdateStatus",
-    "RelativePath": "api/Order/{orderId}/status",
+    "RelativePath": "api/Order/{transactionId}/status",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orderId",
+        "Name": "transactionId",
         "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.OrderStatusUpdateRequest",
-        "IsRequired": true
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -367,6 +373,22 @@
     "Parameters": [
       {
         "Name": "buyerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChoOnlineAPI.Controllers.OrderController",
+    "Method": "GetBySeller",
+    "RelativePath": "api/Order/seller/{sellerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellerId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -392,8 +414,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.ProductCreateRequest",
+        "Name": "product",
+        "Type": "ChoOnlineAPI.Models.Product",
         "IsRequired": true
       }
     ],
@@ -429,8 +451,8 @@
         "IsRequired": true
       },
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.ProductUpdateRequest",
+        "Name": "product",
+        "Type": "ChoOnlineAPI.Models.Product",
         "IsRequired": true
       }
     ],
@@ -497,8 +519,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.ReportCreateRequest",
+        "Name": "report",
+        "Type": "ChoOnlineAPI.Models.Report",
         "IsRequired": true
       }
     ],
@@ -518,8 +540,8 @@
         "IsRequired": true
       },
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.ReportStatusUpdateRequest",
+        "Name": "report",
+        "Type": "ChoOnlineAPI.Models.Report",
         "IsRequired": true
       }
     ],
@@ -544,8 +566,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ChoOnlineAPI.Models.ReviewCreateRequest",
+        "Name": "review",
+        "Type": "ChoOnlineAPI.Models.Review",
         "IsRequired": true
       }
     ],
@@ -582,26 +604,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChoOnlineAPI.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[ChoOnlineAPI.WeatherForecast, ChoOnlineAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]

@@ -1,4 +1,5 @@
 using ChoOnlineAPI.Models;
+using ChoOnlineAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChoOnlineAPI.Controllers
@@ -7,8 +8,14 @@ namespace ChoOnlineAPI.Controllers
     [Route("api/[controller]")]
     public class ReportController : ControllerBase
     {
+        private readonly IReportRepository _reportRepository;
+
+        public ReportController(IReportRepository reportRepository)
+        {
+            _reportRepository = reportRepository;
+        }
         [HttpPost]
-        public IActionResult Create([FromBody] ReportCreateRequest request)
+        public IActionResult Create([FromBody] Report report)
         {
             return StatusCode(501);
         }
@@ -20,12 +27,15 @@ namespace ChoOnlineAPI.Controllers
         }
 
         [HttpPut("{reportId:int}/status")]
-        public IActionResult UpdateStatus([FromRoute] int reportId, [FromBody] ReportStatusUpdateRequest request)
+        public IActionResult UpdateStatus([FromRoute] int reportId, [FromBody] Report report)
         {
             return StatusCode(501);
         }
     }
 }
+
+
+
 
 
 

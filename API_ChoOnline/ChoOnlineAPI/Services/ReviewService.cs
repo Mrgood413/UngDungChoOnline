@@ -16,17 +16,20 @@ namespace ChoOnlineAPI.Services
 
         public async Task<Review?> GetByIdAsync(int reviewId)
         {
-            return await _ctx.Reviews.AsNoTracking().FirstOrDefaultAsync(r => r.ReviewID == reviewId);
+            return await _ctx.Reviews.AsNoTracking().FirstOrDefaultAsync(r => r.ReviewId == reviewId);
         }
 
         public async Task<IEnumerable<Review>> GetByProductIdAsync(int productId)
         {
-            return await _ctx.Reviews.AsNoTracking().Where(r => r.ProductID == productId).ToListAsync();
+            return await _ctx.Reviews.AsNoTracking()
+                .Include(r => r.Transaction)
+                .Where(r => r.Transaction.ProductId == productId)
+                .ToListAsync();
         }
 
-        public async Task<IEnumerable<Review>> GetByBuyerIdAsync(int buyerId)
+        public async Task<IEnumerable<Review>> GetByRevieweeIdAsync(int userId)
         {
-            return await _ctx.Reviews.AsNoTracking().Where(r => r.BuyerID == buyerId).ToListAsync();
+            return await _ctx.Reviews.AsNoTracking().Where(r => r.RevieweeId == userId).ToListAsync();
         }
 
         public async Task<Review> CreateAsync(Review review)
@@ -46,5 +49,6 @@ namespace ChoOnlineAPI.Services
         }
     }
 }
+
 
 

@@ -9,29 +9,37 @@ namespace ChoOnlineAPI.Services
         private readonly AppDbContext _ctx;
         public ModerationLogService(AppDbContext ctx) => _ctx = ctx;
 
-        public async Task<IEnumerable<ModerationLog>> GetAllAsync()
+        public async Task<IEnumerable<AdminAction>> GetAllAsync()
         {
-            return await _ctx.ModerationLogs.AsNoTracking().ToListAsync();
+            return await _ctx.AdminActions.AsNoTracking().ToListAsync();
         }
 
-        public async Task<ModerationLog?> GetByIdAsync(int logId)
+        public async Task<AdminAction?> GetByIdAsync(int actionId)
         {
-            return await _ctx.ModerationLogs.AsNoTracking().FirstOrDefaultAsync(l => l.LogID == logId);
+            return await _ctx.AdminActions.AsNoTracking().FirstOrDefaultAsync(a => a.ActionId == actionId);
         }
 
-        public async Task<IEnumerable<ModerationLog>> GetByAdminIdAsync(int adminId)
+        public async Task<IEnumerable<AdminAction>> GetByAdminIdAsync(int adminId)
         {
-            return await _ctx.ModerationLogs.AsNoTracking().Where(l => l.AdminID == adminId).ToListAsync();
+            return await _ctx.AdminActions.AsNoTracking().Where(a => a.AdminId == adminId).ToListAsync();
         }
 
-        public async Task<ModerationLog> CreateAsync(ModerationLog log)
+        public async Task<IEnumerable<AdminAction>> GetByTargetUserIdAsync(int targetUserId)
         {
-            log.CreatedAt = DateTime.UtcNow;
-            _ctx.ModerationLogs.Add(log);
+            return await _ctx.AdminActions.AsNoTracking().Where(a => a.TargetUserId == targetUserId).ToListAsync();
+        }
+
+        public async Task<AdminAction> CreateAsync(AdminAction action)
+        {
+            action.CreatedAt = DateTime.UtcNow;
+            _ctx.AdminActions.Add(action);
             await _ctx.SaveChangesAsync();
-            return log;
+            return action;
         }
     }
 }
+
+
+
 
 

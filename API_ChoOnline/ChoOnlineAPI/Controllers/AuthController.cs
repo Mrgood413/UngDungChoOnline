@@ -1,4 +1,5 @@
 using ChoOnlineAPI.Models;
+using ChoOnlineAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChoOnlineAPI.Controllers
@@ -7,14 +8,20 @@ namespace ChoOnlineAPI.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
+        private readonly IUserRepository _userRepository;
+
+        public AuthController(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterRequest request)
+        public IActionResult Register([FromBody] User user)
         {
             return StatusCode(501);
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest request)
+        public IActionResult Login([FromBody] User user)
         {
             return StatusCode(501);
         }

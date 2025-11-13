@@ -16,17 +16,17 @@ namespace ChoOnlineAPI.Services
 
         public async Task<Product?> GetByIdAsync(int productId)
         {
-            return await _ctx.Products.AsNoTracking().FirstOrDefaultAsync(p => p.ProductID == productId);
+            return await _ctx.Products.AsNoTracking().FirstOrDefaultAsync(p => p.ProductId == productId);
         }
 
         public async Task<IEnumerable<Product>> GetBySellerIdAsync(int sellerId)
         {
-            return await _ctx.Products.AsNoTracking().Where(p => p.SellerID == sellerId).ToListAsync();
+            return await _ctx.Products.AsNoTracking().Where(p => p.SellerId == sellerId).ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetByCategoryIdAsync(int categoryId)
         {
-            return await _ctx.Products.AsNoTracking().Where(p => p.CategoryID == categoryId).ToListAsync();
+            return await _ctx.Products.AsNoTracking().Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
         public async Task<Product> CreateAsync(Product product)
@@ -58,15 +58,16 @@ namespace ChoOnlineAPI.Services
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 keyword = keyword.Trim();
-                q = q.Where(p => p.ProductName.Contains(keyword) || (p.Description != null && p.Description.Contains(keyword)));
+                q = q.Where(p => p.Title.Contains(keyword) || (p.Description != null && p.Description.Contains(keyword)));
             }
-            if (categoryId.HasValue) q = q.Where(p => p.CategoryID == categoryId);
+            if (categoryId.HasValue) q = q.Where(p => p.CategoryId == categoryId);
             if (minPrice.HasValue) q = q.Where(p => p.Price >= minPrice);
             if (maxPrice.HasValue) q = q.Where(p => p.Price <= maxPrice);
-            if (!string.IsNullOrWhiteSpace(location)) q = q.Where(p => p.Location == location);
-            return await q.AsNoTracking().OrderByDescending(p => p.DateCreated).ToListAsync();
+            if (!string.IsNullOrWhiteSpace(location)) q = q.Where(p => p.AddressText != null && p.AddressText.Contains(location));
+            return await q.AsNoTracking().OrderByDescending(p => p.CreatedAt).ToListAsync();
         }
     }
 }
+
 
 

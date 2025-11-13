@@ -1,4 +1,5 @@
 using ChoOnlineAPI.Models;
+using ChoOnlineAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChoOnlineAPI.Controllers
@@ -7,6 +8,12 @@ namespace ChoOnlineAPI.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
+        private readonly IProductRepository _productRepository;
+
+        public ProductController(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -20,13 +27,13 @@ namespace ChoOnlineAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] ProductCreateRequest request)
+        public IActionResult Create([FromBody] Product product)
         {
             return StatusCode(501);
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] ProductUpdateRequest request)
+        public IActionResult Update([FromRoute] int id, [FromBody] Product product)
         {
             return StatusCode(501);
         }

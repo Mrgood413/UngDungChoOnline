@@ -16,7 +16,7 @@ namespace ChoOnlineAPI.Services
 
         public async Task<User?> GetByIdAsync(int userId)
         {
-            return await _ctx.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserID == userId);
+            return await _ctx.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserId == userId);
         }
 
         public async Task<User?> GetByEmailAsync(string email)
@@ -26,7 +26,8 @@ namespace ChoOnlineAPI.Services
 
         public async Task<User> CreateAsync(User user)
         {
-            user.DateCreated = DateTime.UtcNow;
+            user.CreatedAt = DateTime.UtcNow;
+            user.UpdatedAt = DateTime.UtcNow;
             _ctx.Users.Add(user);
             await _ctx.SaveChangesAsync();
             return user;
@@ -34,6 +35,7 @@ namespace ChoOnlineAPI.Services
 
         public async Task<User> UpdateAsync(User user)
         {
+            user.UpdatedAt = DateTime.UtcNow;
             _ctx.Entry(user).State = EntityState.Modified;
             await _ctx.SaveChangesAsync();
             return user;
@@ -48,16 +50,12 @@ namespace ChoOnlineAPI.Services
             return true;
         }
 
-        public async Task<IEnumerable<User>> GetByRoleAsync(string role)
+        public async Task<IEnumerable<User>> GetByRoleAsync(UserRole role)
         {
             return await _ctx.Users.AsNoTracking().Where(u => u.Role == role).ToListAsync();
         }
-
-        public async Task<IEnumerable<User>> GetByStatusAsync(string status)
-        {
-            return await _ctx.Users.AsNoTracking().Where(u => u.Status == status).ToListAsync();
-        }
     }
 }
+
 
 

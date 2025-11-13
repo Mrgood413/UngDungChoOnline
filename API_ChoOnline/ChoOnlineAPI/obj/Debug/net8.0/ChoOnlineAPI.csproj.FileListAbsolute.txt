@@ -171,3 +171,4 @@ C:\homework\Đồ án chuyên nghành\UngDungChoOnline\API_ChoOnline\ChoOnlineAP
 C:\homework\Đồ án chuyên nghành\UngDungChoOnline\API_ChoOnline\ChoOnlineAPI\obj\Debug\net8.0\ChoOnlineAPI.pdb
 C:\homework\Đồ án chuyên nghành\UngDungChoOnline\API_ChoOnline\ChoOnlineAPI\obj\Debug\net8.0\ChoOnlineAPI.genruntimeconfig.cache
 C:\homework\Đồ án chuyên nghành\UngDungChoOnline\API_ChoOnline\ChoOnlineAPI\obj\Debug\net8.0\ref\ChoOnlineAPI.dll
+C:\homework\Đồ án chuyên nghành\UngDungChoOnline\API_ChoOnline\ChoOnlineAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

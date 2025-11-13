@@ -52,13 +52,11 @@ if (!string.IsNullOrWhiteSpace(jwtKey))
 builder.Services.AddScoped<IProductRepository, ProductService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryService>();
 builder.Services.AddScoped<IUserRepository, UserService>();
-builder.Services.AddScoped<ICartRepository, CartService>();
-builder.Services.AddScoped<ICartItemRepository, CartItemService>();
 builder.Services.AddScoped<IOrderRepository, OrderService>();
-builder.Services.AddScoped<IOrderDetailRepository, OrderDetailService>();
 builder.Services.AddScoped<IReviewRepository, ReviewService>();
 builder.Services.AddScoped<IReportRepository, ReportService>();
 builder.Services.AddScoped<IModerationLogRepository, ModerationLogService>();
+builder.Services.AddScoped<IFavoriteRepository, FavoriteService>();
 
 var app = builder.Build();
 
